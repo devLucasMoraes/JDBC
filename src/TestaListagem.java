@@ -5,9 +5,9 @@ public class TestaListagem {
         ConnectionFactory criaConexcao = new ConnectionFactory();
         Connection connection = criaConexcao.recuperarConexao();
 
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement("SELECT id, nome, descricao FROM produtos");
         // metodo statement.execute() retorna true para SELECT (porque retorna uma lista) e false para INSERT,DELETE e UPDATE
-        statement.execute("SELECT id, nome, descricao FROM produtos");
+        statement.execute();
 
         //pega os resultados(lista) do statement.execute()
         ResultSet resultSet = statement.getResultSet();

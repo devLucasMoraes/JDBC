@@ -5,13 +5,31 @@ public class TestaInsercaoComParametro {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.recuperarConexao();
 
-        String nome = "Mouse'";
-        String descricao = "Mouse sem fio); delete from produtos";
+        // eu vou controlar o momento do Commit da minha aplicação, no momento da minha transação.
+        connection.setAutoCommit(false);
 
-        // evitando SQL Injection
-        PreparedStatement statement = connection
-                .prepareStatement("INSERT INTO produtos (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+        try {
+            // evitando SQL Injection
+            PreparedStatement statement = connection
+                    .prepareStatement("INSERT INTO produtos (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
 
+            adicinarVariavel("SmartTv","45",statement);
+            adicinarVariavel("radio","radio de bateria",statement);
+
+            connection.commit();
+            statement.close();
+
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Rollback execultado");
+            connection.rollback();
+        }
+        connection.close();
+
+
+    }
+
+    private static void adicinarVariavel(String nome, String descricao, PreparedStatement statement) throws SQLException {
         statement.setString(1, nome);
         statement.setString(2, descricao);
 

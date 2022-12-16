@@ -2,12 +2,14 @@ import java.sql.*;
 
 public class TestaListagem {
     public static void main(String[] args) throws SQLException {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/loja_virtual","root","ht1943");
+        ConnectionFactory criaConexcao = new ConnectionFactory();
+        Connection connection = criaConexcao.recuperarConexao();
 
         Statement statement = connection.createStatement();
-        // metodo statement.execute() retorna true para SELECT e false para INSERT,DELETE e UPDATE
+        // metodo statement.execute() retorna true para SELECT (porque retorna uma lista) e false para INSERT,DELETE e UPDATE
         statement.execute("SELECT id, nome, descricao FROM produtos");
 
+        //pega os resultados(lista) do statement.execute()
         ResultSet resultSet = statement.getResultSet();
 
         while (resultSet.next()) {

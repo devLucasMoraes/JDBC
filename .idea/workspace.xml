@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4e87c6f-d347-47df-b115-b8fbe7b8898a" name="Changes" comment="criando conexao com o banco de dados">
-      <change afterPath="$PROJECT_DIR$/src/TestaListagem.java" afterDir="false" />
+    <list default="true" id="e4e87c6f-d347-47df-b115-b8fbe7b8898a" name="Changes" comment="resgatando dados do banco">
+      <change afterPath="$PROJECT_DIR$/src/ConnectionFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestaConexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestaConexao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestaListagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestaListagem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671149092593</updated>
-      <workItem from="1671149095767" duration="2840000" />
+      <workItem from="1671149095767" duration="3935000" />
     </task>
     <task id="LOCAL-00001" summary="criando conexao com o banco de dados">
       <created>1671151339889</created>
@@ -58,7 +60,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671151339889</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="resgatando dados do banco">
+      <created>1671152466266</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671152466266</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -77,6 +86,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="criando conexao com o banco de dados" />
-    <option name="LAST_COMMIT_MESSAGE" value="criando conexao com o banco de dados" />
+    <MESSAGE value="resgatando dados do banco" />
+    <option name="LAST_COMMIT_MESSAGE" value="resgatando dados do banco" />
   </component>
 </project>

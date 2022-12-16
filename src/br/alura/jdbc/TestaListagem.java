@@ -1,3 +1,5 @@
+package br.alura.jdbc;
+
 import java.sql.*;
 
 public class TestaListagem {

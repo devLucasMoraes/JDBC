@@ -10,9 +10,15 @@ public class Produto {
         this.descricao = descricao;
     }
 
+    public Produto(Integer id, String nome, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
     @Override
     public String toString() {
-        return String.format("o produto criado foi: %d, %s, %s", this.id, this.nome, this.descricao);
+        return String.format("o produto é: %d, %s, %s", this.id, this.nome, this.descricao);
     }
 
     public void setId(Integer id) {

@@ -1,4 +1,4 @@
-package br.alura.jdbc.model;
+package br.com.alura.jdbc.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,11 @@ public class Categoria {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -22,10 +27,11 @@ public class Categoria {
     }
 
     public List<Produto> getProdutos() {
-        return this.produtos;
+        return produtos;
     }
 
     public void adicionar(Produto produto) {
         produtos.add(produto);
     }
+
 }

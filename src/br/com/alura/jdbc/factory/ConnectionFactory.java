@@ -1,4 +1,4 @@
-package br.alura.jdbc;
+package br.com.alura.jdbc.factory;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

@@ -1,7 +1,8 @@
-package br.alura.jdbc;
+package br.com.alura.jdbc;
 
-import br.alura.jdbc.dao.ProdutoDAO;
-import br.alura.jdbc.model.Produto;
+import br.com.alura.jdbc.dao.ProdutoDAO;
+import br.com.alura.jdbc.factory.ConnectionFactory;
+import br.com.alura.jdbc.model.Produto;
 
 import java.sql.*;
 import java.util.List;

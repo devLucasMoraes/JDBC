@@ -1,7 +1,7 @@
-package br.alura.jdbc.dao;
+package br.com.alura.jdbc.dao;
 
-import br.alura.jdbc.model.Categoria;
-import br.alura.jdbc.model.Produto;
+import br.com.alura.jdbc.model.Categoria;
+import br.com.alura.jdbc.model.Produto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,7 +1,7 @@
-package br.alura.jdbc.dao;
+package br.com.alura.jdbc.dao;
 
-import br.alura.jdbc.model.Categoria;
-import br.alura.jdbc.model.Produto;
+import br.com.alura.jdbc.model.Categoria;
+import br.com.alura.jdbc.model.Produto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,6 +25,25 @@ public class ProdutoDAO {
             try (ResultSet resultSet = preparedStatement.getGeneratedKeys()){
                 while (resultSet.next()) {
                     produto.setId(resultSet.getInt(1));
+                }
+            }
+        }
+    }
+
+    public void salvarComCategoria(Produto produto) throws SQLException {
+        String sql = "INSERT INTO produtos (nome, descricao, categoria_id) VALUES (?, ?, ?)";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            pstm.setString(1, produto.getNome());
+            pstm.setString(2, produto.getDescricao());
+            pstm.setInt(3, produto.getCategoriaId());
+
+            pstm.execute();
+
+            try (ResultSet rst = pstm.getGeneratedKeys()) {
+                while (rst.next()) {
+                    produto.setId(rst.getInt(1));
                 }
             }
         }
@@ -60,5 +79,32 @@ public class ProdutoDAO {
             }
         }
         return produtos;
+    }
+
+    public void deletar(Integer id) throws SQLException {
+        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID = ?")) {
+            stm.setInt(1, id);
+            stm.execute();
+        }
+    }
+
+    public void alterar(String nome, String descricao, Integer id) throws SQLException {
+        try (PreparedStatement stm = connection
+                .prepareStatement("UPDATE PRODUTO P SET P.NOME = ?, P.DESCRICAO = ? WHERE ID = ?")) {
+            stm.setString(1, nome);
+            stm.setString(2, descricao);
+            stm.setInt(3, id);
+            stm.execute();
+        }
+    }
+
+    private void trasformarResultSetEmProduto(List<Produto> produtos, PreparedStatement pstm) throws SQLException {
+        try (ResultSet rst = pstm.getResultSet()) {
+            while (rst.next()) {
+                Produto produto = new Produto(rst.getInt(1), rst.getString(2), rst.getString(3));
+
+                produtos.add(produto);
+            }
+        }
     }
 }

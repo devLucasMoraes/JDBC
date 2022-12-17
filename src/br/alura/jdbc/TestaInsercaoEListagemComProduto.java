@@ -14,7 +14,7 @@ public class TestaInsercaoEListagemComProduto {
             ProdutoDAO produtoDAO = new ProdutoDAO(connection);
             produtoDAO.salvar(produto);
             List<Produto> produtoList = produtoDAO.listar();
-            produtoList.stream().forEach(pl -> System.out.println(pl));
+            produtoList.forEach(pl -> System.out.println(pl));
         }
         System.out.println(produto);
     }

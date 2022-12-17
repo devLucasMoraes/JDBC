@@ -97,7 +97,7 @@ public class ProdutoDAO {
     }
 
     public void deletar(Integer id) {
-        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID = ?")) {
+        try (PreparedStatement stm = connection.prepareStatement("DELETE FROM produtos WHERE id = ?")) {
             stm.setInt(1, id);
             stm.execute();
         } catch (SQLException e) {
@@ -107,7 +107,7 @@ public class ProdutoDAO {
 
     public void alterar(String nome, String descricao, Integer id) {
         try (PreparedStatement stm = connection
-                .prepareStatement("UPDATE PRODUTO P SET P.NOME = ?, P.DESCRICAO = ? WHERE ID = ?")) {
+                .prepareStatement("UPDATE produtos p SET p.nome = ?, p.descricao = ? WHERE id = ?")) {
             stm.setString(1, nome);
             stm.setString(2, descricao);
             stm.setInt(3, id);

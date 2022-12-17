@@ -1,5 +1,6 @@
 package br.alura.jdbc.dao;
 
+import br.alura.jdbc.model.Categoria;
 import br.alura.jdbc.model.Produto;
 
 import java.sql.*;
@@ -32,6 +33,23 @@ public class ProdutoDAO {
         List<Produto> produtos = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, nome, descricao FROM produtos")){
+            preparedStatement.execute();
+
+            try (ResultSet resultSet = preparedStatement.getResultSet()){
+                while (resultSet.next()){
+                    Produto produto = new Produto(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
+                    produtos.add(produto);
+                }
+            }
+        }
+        return produtos;
+    }
+
+    public List<Produto> buscar(Categoria ct) throws SQLException {
+        List<Produto> produtos = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, nome, descricao FROM produtos WHERE categoria_id = ?")){
+            preparedStatement.setInt(1,ct.getId());
             preparedStatement.execute();
 
             try (ResultSet resultSet = preparedStatement.getResultSet()){
